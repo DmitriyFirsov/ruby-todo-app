@@ -1,0 +1,18 @@
+<style>
+   .task-list {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 10px 5px;
+   }
+</style>
+<ul class="task-list">
+  <% @tasks.each do |task| %>
+      <li>
+        <div>Task id: <%= task.id %></div>
+        <div>Task name: <%= task.name.to_s %></div>
+        <div>Task description: <%= task.description.to_s %></div>
+        <div>Task author: <%= task.user.name %></div>
+      </li>
+  <% end %>
+</ul>

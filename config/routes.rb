@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get '/task', to: 'task#index'
+  get '/api/task', to: 'task_api#index'
 end
