@@ -1,11 +1,4 @@
-<style>
-   .task-list {
-         display: flex;
-         flex-direction: column;
-         align-items: center;
-         gap: 10px 5px;
-   }
-</style>
+<%= stylesheet_link_tag "tasks" %>
 <ul class="task-list">
   <% @tasks.each do |task| %>
       <li>
