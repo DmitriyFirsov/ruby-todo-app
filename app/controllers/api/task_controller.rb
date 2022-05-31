@@ -3,7 +3,7 @@
 module Api
   class TaskController < Api::ApplicationController
     def index
-      tasks = Task.eager_load(:user).all
+      tasks = TaskService.new.task_list params: params
       render json: tasks, include: :user
     end
   end
