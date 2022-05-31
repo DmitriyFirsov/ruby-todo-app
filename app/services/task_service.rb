@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
+# Service for work with tasks
 class TaskService
-  @count_per_page
-
   def initialize(count_per_page: 10)
     @count_per_page = count_per_page
   end

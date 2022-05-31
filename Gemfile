@@ -59,6 +59,7 @@ group :development, :test do
 
   # See https://github.com/rubocop/rubocop
   gem 'rubocop', '~> 1.30', require: false
+  gem 'rubocop-rails', '~> 2.14', '>= 2.14.2'
 end
 
 group :development do
