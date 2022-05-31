@@ -6,7 +6,7 @@ class TaskService
     @count_per_page = count_per_page
   end
 
-  def task_list(params: nil)
+  def task_list(params: {})
     Task
       .offset(calc_offset(extract_page(params), @count_per_page))
       .limit(@count_per_page)
@@ -21,9 +21,6 @@ class TaskService
   end
 
   def extract_page(params)
-    return 1 if params.nil? || params[:page].nil?
-
-    page = params[:page]
-    page.to_i
+    params&.[](:page) || 1
   end
 end

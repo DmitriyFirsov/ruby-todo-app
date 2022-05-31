@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get "task", to: "app/tasks#index"
+  resources :tasks, only: %[index]
 
   namespace "api" do
-    get "task", to: "tasks#index"
+    resources :tasks, only: %[index]
   end
 end
