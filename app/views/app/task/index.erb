@@ -3,8 +3,8 @@
   <% @tasks.each do |task| %>
       <li>
         <div>Task id: <%= task.id %></div>
-        <div>Task name: <%= task.name.to_s %></div>
-        <div>Task description: <%= task.description.to_s %></div>
+        <div>Task name: <%= task.name %></div>
+        <div>Task description: <%= task.description %></div>
         <div>Task author: <%= task.user.name %></div>
       </li>
   <% end %>
