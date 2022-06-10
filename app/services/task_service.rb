@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Service for work with tasks
 class TaskService
   def initialize(count_per_page: 10)
     @count_per_page = count_per_page
@@ -14,13 +13,13 @@ class TaskService
       .all
   end
 
-  private
+  protected
 
   def calc_offset(page, limit)
     (page - 1) * limit
   end
 
   def extract_page(params)
-    params&.[](:page) || 1
+    (params&.[](:page) || "1").to_i
   end
 end
