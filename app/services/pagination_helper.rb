@@ -7,7 +7,7 @@ module PaginationHelper
 
   def set_offset(entity, params)
     entity
-      .offset(calc_offset(params[:page], params[:limit]))
-      .limit(params[:limit])
+      .offset(calc_offset(params.page, params.limit))
+      .limit(params.limit)
   end
 end
