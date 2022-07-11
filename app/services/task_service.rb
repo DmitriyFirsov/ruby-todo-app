@@ -1,14 +1,8 @@
 # frozen_string_literal: true
 
 class TaskService
-  def initialize(count_per_page: 10)
-    @count_per_page = count_per_page
-  end
-
-  def task_list(params: {})
-    Task
-      .offset(calc_offset(extract_page(params), @count_per_page))
-      .limit(@count_per_page)
+  def task_list(params)
+    set_offset(Task, params)
       .eager_load(:user)
       .all
   end
@@ -19,7 +13,9 @@ class TaskService
     (page - 1) * limit
   end
 
-  def extract_page(params)
-    (params&.[](:page) || "1").to_i
+  def set_offset(entity, params)
+    entity
+      .offset(calc_offset(params[:page], params[:limit]))
+      .limit(params[:limit])
   end
 end
