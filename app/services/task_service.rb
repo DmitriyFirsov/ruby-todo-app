@@ -4,8 +4,7 @@ class TaskService
   include PaginationHelper
 
   def task_list(params)
-    set_offset(Task, params)
+    paginate(Task, params)
       .eager_load(:user)
-      .all
   end
 end

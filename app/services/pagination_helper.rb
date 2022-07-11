@@ -5,7 +5,7 @@ module PaginationHelper
     (page - 1) * limit
   end
 
-  def set_offset(entity, params)
+  def paginate(entity, params)
     entity
       .offset(calc_offset(params.page, params.limit))
       .limit(params.limit)

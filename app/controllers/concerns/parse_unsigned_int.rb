@@ -14,8 +14,6 @@ class ParseUnsignedInt
   protected
 
   def to_unsigned_int(target)
-    if /^[1-9]\d*$/ =~ target
-      target.to_i
-    end
+    target.to_i if target && target.match?(/^[1-9]\d*$/)
   end
 end
