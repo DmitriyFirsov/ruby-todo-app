@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PageNumber
+class ParseUnsignedInt
   attr_reader :value
 
   def initialize(target, min = 1, max = nil)
