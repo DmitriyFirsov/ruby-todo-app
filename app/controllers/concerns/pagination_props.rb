@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PaginationPropsExtractor
+class PaginationProps
   attr_reader :page, :limit
 
   def initialize(params)
