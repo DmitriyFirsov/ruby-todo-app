@@ -4,5 +4,5 @@ class User < ApplicationRecord
   validates :name, :email, presence: true
   validates :email, uniqueness: true
 
-  has_many :tasks
+  has_many :tasks, :access_token
 end

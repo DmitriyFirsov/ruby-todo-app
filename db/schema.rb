@@ -12,9 +12,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_220_527_135_604) do
+ActiveRecord::Schema[7.0].define(version: 20_220_711_144_555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "access_tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "expired", precision: nil, null: false
+    t.string "user_agent", null: false
+    t.uuid "users_id"
+    t.index ["users_id"], name: "index_access_tokens_on_users_id"
+  end
 
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
@@ -31,8 +38,10 @@ ActiveRecord::Schema[7.0].define(version: 20_220_527_135_604) do
     t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "access_tokens", "users", column: "users_id"
   add_foreign_key "tasks", "users"
 end

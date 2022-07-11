@@ -1,12 +1,19 @@
+# frozen_string_literal: true
+
 class Auth < ActiveRecord::Migration[7.0]
   def change
-    create_table :access_tokens, id: :uuid |t|
+    create_table :access_tokens, id: :uuid do |t|
       t.timestamp :expired, null: false
       t.string    :user_agent, null: false
-    end 
+      t.belongs_to :users, foreign_key: true, type: :uuid
+    end
 
-    add_reference :users, :access_tokens, foreign_key: true
+    add_column :users, :password, :string
 
-    add_column :users, :password, :string, null: false
+    execute <<-SQL
+         UPDATE users u set password = '123456'
+    SQL
+
+    change_column_null :users, :password, false
   end
 end
