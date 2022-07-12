@@ -15,8 +15,6 @@ class PaginationProps
       @page
     when :limit
       @limit
-    else
-      nil
     end
   end
 end
