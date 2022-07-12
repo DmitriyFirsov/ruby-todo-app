@@ -18,5 +18,15 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+          
+      - name: Setup bundler
+        run: gem install bundler
+
+      - name: Setup gems
+        run: bundle install
+
+      - name: Rubocop
+        run: bundle exec rubocop
+
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel
