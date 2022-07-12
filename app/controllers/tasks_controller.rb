@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 class TasksController < ApplicationController
-  include PaginationConcern
-
   def index
-    @tasks = TaskService.new.task_list(extract_pagination_props)
+    @tasks = TaskService.new.task_list(PaginationProps.new(params))
   end
-
-  def new; end
 end
