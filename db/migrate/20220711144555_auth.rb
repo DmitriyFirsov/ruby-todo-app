@@ -8,12 +8,12 @@ class Auth < ActiveRecord::Migration[7.0]
       t.belongs_to :users, foreign_key: true, type: :uuid
     end
 
-    add_column :users, :password, :string
+    add_column :users, :password_hash, :string
 
     execute <<-SQL
-         UPDATE users u set password = '123456'
+         UPDATE users u set password_hash = '#{BCrypt::Password.create("123456")}'
     SQL
 
-    change_column_null :users, :password, false
+    change_column_null :users, :password_hash, false
   end
 end
