@@ -9,10 +9,8 @@ class User < ApplicationRecord
   has_many :tasks
   has_many :access_token
 
- 
-
   def password
-    self.password_hash
+    password_hash
   end
 
   def password=(new_password)
