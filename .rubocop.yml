@@ -1,9 +1,7 @@
 AllCops:
   NewCops: enable
-
-Metrics/BlockLength:
   Exclude:
-    - db/schema.rb
+    - db/**/*
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
