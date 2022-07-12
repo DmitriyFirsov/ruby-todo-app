@@ -5,4 +5,10 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  resources :tasks, only: %i[index]
+
+  namespace :api do
+    resources :tasks, only: %i[index]
+  end
 end
