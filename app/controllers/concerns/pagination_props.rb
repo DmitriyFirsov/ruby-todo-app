@@ -7,4 +7,16 @@ class PaginationProps
     @page = ParseUnsignedInt.new(params[:page], 1).value
     @limit = ParseUnsignedInt.new(params[:limit], 10, 30).value
   end
+
+  # like hash :)
+  def [](key)
+    case key
+    when :page
+      @page
+    when :limit
+      @limit
+    else
+      nil
+    end
+  end
 end
