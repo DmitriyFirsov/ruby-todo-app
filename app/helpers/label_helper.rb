@@ -1,5 +1,8 @@
 module LabelHelper
-    def my_test_label
-        'test'
+    def custom_label(label: nil)
+        content_tag(:label) {
+            concat(content_tag(:div, label)) if label
+            yield
+        }
     end
 end
