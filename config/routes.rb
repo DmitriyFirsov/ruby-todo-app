@@ -8,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :tasks, only: %i[index]
 
+  get "registration", to: "registration#index"
+  post "registration", to: "registration#register"
+
   namespace :api do
     resources :tasks, only: %i[index]
   end

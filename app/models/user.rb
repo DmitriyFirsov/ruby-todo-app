@@ -8,11 +8,11 @@ class User < ApplicationRecord
 
   has_many :tasks
 
-  def password 
+  def password
     @password_hash
   end
 
-  def password=(new_password) 
+  def password=(new_password)
     @password_hash = Password.create(new_password)
   end
 end
