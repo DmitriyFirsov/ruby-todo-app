@@ -1,0 +1,12 @@
+<%= stylesheet_link_tag "registration" %>
+
+<%= form_with model: @user, html: { class: 'form' } do |form| %>
+    <h1> Registration page </h1>
+    <%= custom_label label: 'Name' do %>
+        <%= form.text_field :name, required: true %>
+    <% end %>
+    <%= form.email_field :email, required: true %>
+    <%= form.password_field :password, required: true %>
+    <%= form.submit "Registration" %>
+<% end %>
+    
